@@ -6,18 +6,23 @@ angular.module('LunchCheck', [])
 
 LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
-  $scope.lunch = "apple";
+  $scope.name = "";
   $scope.totalLunch = "";
 
   $scope.displayLunch = function () {
-    return "I'm full!!";
-  }
+    $scope.newName = (($scope.name.split(',')).length);
+    console.log($scope.newName);
+
+    if ($scope.newName <= 3 && $scope.name != ""){
+      $scope.totalLunch = "Enjoy!";
+    }else if ($scope.newName > 3){
+      $scope.totalLunch = "Too much!";
+    }else if($scope.name == ""){
+      $scope.totalLunch = "Please enter data first";
+    };
+  };
 
 }
 
-  // .controller('LunchCheckController', function($scope){
-  //
-  //
-  // });
 
 })();
